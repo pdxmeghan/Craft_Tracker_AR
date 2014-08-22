@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  # it { should have_and_belong_to_many :projects }
-  # it 'has many projects'
+#has and belongs to many projects
+  it 'has many projects' do
+    project = Project.create({project_name: 'zigzag scarf', craft_type: 'whatever'})
+    user = User.create({name: 'meghan lindsley'})
+    user.projects << project
+    expect(user.projects).to eq [project]
+  end
 
   it 'validates the presence of name' do
     user = User.create({name: ''})

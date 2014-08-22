@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Project do
-  # it {should belong_to :users }
 
   it 'has many users' do
     project = Project.create({project_name: 'zigzag scarf', craft_type: 'whatever'})
