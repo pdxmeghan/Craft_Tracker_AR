@@ -3,7 +3,7 @@
 ####by [Meghan Lindsley](https://www.github.com/pdxmeghan/)
 ####08/22/14
 
-####Craft Tracker keeps record of users and crafts, and assigns users to projects. A project can have many ####users, and a user can have many projects.
+#####Craft Tracker keeps record of users and crafts, and assigns users to projects. A project can have many users, and a user can have many projects.
 
 ###To Use:
 Gems used in the running of the program, and in the testing:
