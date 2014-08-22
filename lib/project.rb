@@ -1,8 +1,10 @@
 class Project < ActiveRecord::Base
+  has_and_belongs_to_many :users
   validates :project_name, :presence => true
   validates :craft_type, :presence => true
   before_save :capitalize_project_name
   before_save :capitalize_craft_type
+
 
 
 private

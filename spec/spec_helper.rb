@@ -1,4 +1,6 @@
 require 'bundler/setup'
+require 'shoulda/matchers'
+
 Bundler.require(:default)
 
 Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }

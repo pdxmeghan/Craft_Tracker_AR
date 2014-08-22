@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe Project do
+  # it {should belong_to :users }
+
+  it 'has many users' do
+    project = Project.create({project_name: 'zigzag scarf', craft_type: 'whatever'})
+    user = User.create({name: 'meghan lindsley'})
+    project.users << user
+    expect(project.users).to eq [user]
+  end
+
   it 'will validate the presence of name' do
     project = Project.create({project_name: ''})
     expect(project.save).to eq false
