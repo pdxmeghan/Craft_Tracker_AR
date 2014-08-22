@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   it 'validates the presence of name' do
-    user = User.new({name: ''})
+    user = User.create({name: ''})
     expect(user.save).to eq false
   end
 
