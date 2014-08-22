@@ -16,9 +16,9 @@ def header
 end
 
 def main_menu
-  whitespace
   menu_input = nil
   until menu_input == 'x'
+    whitespace
     puts "[1] - to add a user"
     puts "[2] - to list all users"
     puts "[3] - to add a project"
@@ -26,6 +26,8 @@ def main_menu
     puts "[5] - to add a project to a user"
     puts "[6] - to list all of a user's projects"
     puts "[7] - to list all of a project's users"
+    puts "[8] - to view recently added projects"
+    puts "[9] - to view recently added users"
     puts "[x] - to exit the program"
     menu_input = gets.chomp
     case menu_input
@@ -43,6 +45,10 @@ def main_menu
       one_users_projects
     when '7'
       one_projects_users
+    when '8'
+      recently_added_projects
+    when '9'
+      recently_added_users
     when 'x'
       puts "goodbye!"
       exit
@@ -100,18 +106,36 @@ def one_users_projects
   header
   list_users
   puts "Enter the index # of the user whose projects you would like to see"
-  user_choice = gets.chomp
-  chosen_user = User.find_by(id: user_choice)
+  chosen_user = User.find_by(id: gets.chomp)
+  puts "\n\n#{chosen_user.name}'s projects are:"
   chosen_user.projects.each do |project|
     puts "#{project.project_name} | #{project.craft_type}"
   end
 end
 
-# def one_projects_users
-#   header
-#   list_projects
-#   puts "Enter the index #  of the project whose users you would like to see"
-#   project_choice = gets.chomp
+def one_projects_users
+  header
+  list_projects
+  puts "Enter the index #  of the project whose users you would like to see"
+  chosen_project = Project.find_by(id: gets.chomp)
+  puts "\n\n#{chosen_project.project_name}'s users are:"
+  chosen_project.users.each do |user|
+    puts "#{user.id} | #{user.name}"
+  end
+end
 
+def recently_added_projects
+  header
+  Project.recently_added.each do |project|
+    puts "#{project.project_name} | #{project.craft_type}"
+  end
+end
+
+def recently_added_users
+  header
+  User.recently_added.each do |user|
+    puts "#{user.id} | #{user.name}"
+  end
+end
 
 main_menu

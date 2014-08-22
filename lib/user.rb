@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   before_save :capitalize_name
 
-  scope :recently_added, -> { where(created_at > Date.today - 2).order(created_at: asc)}
+  scope :recently_added, -> { where('created_at >= ?', Date.today - 2).order(created_at: :asc)}
 
 private
   def capitalize_name
