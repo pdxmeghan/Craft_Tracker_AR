@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   before_save :capitalize_project_name
   before_save :capitalize_craft_type
 
-
+  scope :recently_added, -> { where(created_at > Date.today - 2).order(created_at: asc)}
 
 private
   def capitalize_project_name
