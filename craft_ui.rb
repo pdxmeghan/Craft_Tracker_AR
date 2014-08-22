@@ -21,6 +21,8 @@ def main_menu
   until menu_input == 'x'
     puts "[1] - to add a user"
     puts "[2] - to list all users"
+    puts "[3] - to add a project"
+    puts "[4] - to list all projects"
     puts "[x] - to exit the program"
     menu_input = gets.chomp
     case menu_input
@@ -28,6 +30,10 @@ def main_menu
       add_user
     when '2'
       list_users
+    when '3'
+      add_project
+    when '4'
+      list_projects
     when 'x'
       puts "goodbye!"
       exit
