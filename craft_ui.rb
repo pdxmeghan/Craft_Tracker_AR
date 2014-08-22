@@ -177,4 +177,22 @@ def edit_project
   puts "Thanks! This project's name will read as: #{chosen_project.project_name}, and the craft type will be #{chosen_project.craft_type}"
 end
 
+def delete_user
+  header
+  list_users
+  puts "Enter the index # of the user you would like to delete"
+  deleted = User.find_by(id: gets.chomp)
+  deleted.destroy
+  puts "#{deleted.name} has been deleted"
+end
+
+def delete_project
+  header
+  list_projects
+  puts "Enter the index # of the project you would like to delete"
+  deleted = Project.find_by(id: gets.chomp)
+  deleted.destroy
+  puts "#{deleted.project_name} has been deleted"
+end
+
 main_menu
