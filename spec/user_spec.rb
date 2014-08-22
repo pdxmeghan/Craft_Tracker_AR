@@ -7,7 +7,7 @@ describe User do
   end
 
   it 'capitalizes the name' do
-    user = User.create({name: 'meghan'})
-    expect(user.name).to eq 'Meghan'
+    user = User.create({name: 'meghan lindsley'})
+    expect(user.name).to eq 'Meghan Lindsley'
   end
 end
