@@ -57,5 +57,21 @@ def list_users
   User.all.each { |user| puts "#{user.id} | #{user.name}" }
 end
 
+def add_project
+  header
+  puts "What is the name of the new project?\n"
+  project_name = gets.chomp
+  puts "What type of craft is it?"
+  craft_type = gets.chomp
+  new_project = Project.create({project_name: project_name, craft_type: craft_type})
+  puts "Thanks! #{new_project.project_name} has been added to the user database"
+end
+
+def list_projects
+  header
+  puts "Here are all of the projects in the database"
+  Project.all.each { |project| puts "#{project.id} | #{project.project_name} | #{project.craft_type}" }
+end
+
 
 main_menu

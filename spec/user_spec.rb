@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe User do
-#has and belongs to many projects
   it 'has many projects' do
     project = Project.create({project_name: 'zigzag scarf', craft_type: 'whatever'})
     user = User.create({name: 'meghan lindsley'})
