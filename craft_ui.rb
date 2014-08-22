@@ -96,4 +96,22 @@ def add_project_to_user
   puts "Thanks! You have chosen to add #{chosen_project.project_name} to #{chosen_user.name}'s list of projects."
 end
 
+def one_users_projects
+  header
+  list_users
+  puts "Enter the index # of the user whose projects you would like to see"
+  user_choice = gets.chomp
+  chosen_user = User.find_by(id: user_choice)
+  chosen_user.projects.each do |project|
+    puts "#{project.project_name} | #{project.craft_type}"
+  end
+end
+
+# def one_projects_users
+#   header
+#   list_projects
+#   puts "Enter the index #  of the project whose users you would like to see"
+#   project_choice = gets.chomp
+
+
 main_menu
