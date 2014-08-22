@@ -28,6 +28,10 @@ def main_menu
     puts "[7] - to list all of a project's users"
     puts "[8] - to view recently added projects"
     puts "[9] - to view recently added users"
+    puts "[10] - to edit a user"
+    puts "[11] - to edit a project"
+    puts "[12] - to delete a user"
+    puts "[13] - to delete a project"
     puts "[x] - to exit the program"
     menu_input = gets.chomp
     case menu_input
@@ -49,6 +53,14 @@ def main_menu
       recently_added_projects
     when '9'
       recently_added_users
+    when '10'
+      edit_user
+    when '11'
+      edit_project
+    when '12'
+      delete_user
+    when '13'
+      delete_project
     when 'x'
       puts "goodbye!"
       exit
@@ -136,6 +148,33 @@ def recently_added_users
   User.recently_added.each do |user|
     puts "#{user.id} | #{user.name}"
   end
+end
+
+def edit_user
+  header
+  list_users
+  puts "Enter the index # of the user you would like to edit"
+  chosen_user = User.find_by(id: gets.chomp)
+  whitespace
+  puts "Please enter what you would like the user's name to be"
+  whitespace
+  chosen_user.update(name: gets.chomp)
+  puts "Thanks! This user's name will read as: #{chosen_user.name}"
+end
+
+def edit_project
+  header
+  list_projects
+  puts "Enter the index # of the project you would like to edit"
+  chosen_project = Project.find_by(id: gets.chomp)
+  whitespace
+  puts "Please enter what you would like the projects's name to be"
+  project_name = gets.chomp
+  whitespace
+  puts "Please enter what you would like the craft type to be"
+  craft_type = gets.chomp
+  chosen_project.update(project_name: project_name, craft_type: craft_type)
+  puts "Thanks! This project's name will read as: #{chosen_project.project_name}, and the craft type will be #{chosen_project.craft_type}"
 end
 
 main_menu
